@@ -13,7 +13,7 @@ var UserRoleScheme = function (user) {
     }
 
     function _logUserRole() {
-        console.log('The current user is: ' + user.role);
+        console.info('The current user is: ' + user.role);
     }
 
     this.tester = function () {
@@ -39,16 +39,12 @@ var UserRoleScheme = function (user) {
 };
 
 var user = {
-    role: 'developer',
+    role: 'manager',
     permissions: ['execute', 'write']
 };
 
 var currentRoleHandler = new UserRoleScheme(user);
+var role = user.role || 'default';
 
 console.log(currentRoleHandler);
-
-if (currentRoleHandler[user.role]) {
-    console.log(currentRoleHandler[user.role]());
-} else {
-    console.log(currentRoleHandler['default']());
-}
+console.log(currentRoleHandler[role]());
